@@ -18,7 +18,7 @@ import {
   Button,
   Footer,
   FooterCopyRight,
-} from '../styles/Home.style';
+} from '../styles/Home.styled';
 
 const HomePage = () => {
   return (

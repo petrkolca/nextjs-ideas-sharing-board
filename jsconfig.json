@@ -24,7 +24,7 @@
     "next-env.d.js",
     "**/*.js",
     "**/*.jsx"
-, "src/styles/Home.style.jsx"  ],
+, "src/styles/Home.styled.jsx"  ],
   "exclude": [
     "node_modules"
   ]
