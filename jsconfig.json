@@ -21,10 +21,10 @@
     "noUncheckedIndexedAccess": true
   },
   "include": [
-    "next-env.d.js",
     "**/*.js",
-    "**/*.jsx"
-, "src/styles/Home.styled.jsx"  ],
+    "**/*.jsx", 
+    "src/styles/*.jsx"  
+  ],
   "exclude": [
     "node_modules"
   ]

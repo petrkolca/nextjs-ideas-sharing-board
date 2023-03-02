@@ -1,14 +1,11 @@
-import styled from 'styled-components';
-import tw from 'twin.macro';
-import Link from 'next/link';
-
+import styled from "styled-components";
+import tw from "twin.macro";
+import Link from "next/link";
 
 export const Container = tw.div`
   flex
   min-h-screen
   flex-col
-  items-center
-  justify-center
   py-2
 `;
 
@@ -17,10 +14,7 @@ export const Main = tw.main`
   w-full
   flex-1
   flex-col
-  items-center
-  justify-center
   px-20
-  text-center
 `;
 
 export const Section = tw.section`

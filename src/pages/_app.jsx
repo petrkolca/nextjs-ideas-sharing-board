@@ -1,20 +1,20 @@
-import Head from 'next/head';
+import Head from "next/head";
+import Layout from "../components/layout";
 
-import 'tailwindcss/tailwind.css';
+import "tailwindcss/tailwind.css";
 
 const _App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Nextjs Tailwind CSS Styled Components with TypeScript</title>
-        <meta
-          name="description"
-          content="Nextjs Tailwind CSS Styled Components with TypeScript"
-        />
+        <title>Post Ideas - Sharing Board</title>
+        <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };
