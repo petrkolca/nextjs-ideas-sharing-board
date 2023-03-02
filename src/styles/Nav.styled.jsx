@@ -32,7 +32,7 @@ export const NavLink = styled(Link)`
     py-2
     px-4
     text-sm
-    bg-cyan-500
+    bg-emerald-400
     text-white
     rounded-lg
     font-medium
