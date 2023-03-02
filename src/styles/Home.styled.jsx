@@ -3,10 +3,11 @@ import tw from "twin.macro";
 import Link from "next/link";
 
 export const Container = tw.div`
-  flex
-  min-h-screen
-  flex-col
-  py-2
+  mx-6
+  md:max-w-2xl
+  md:mx-auto
+  bg-white
+  font-poppins
 `;
 
 export const Main = tw.main`
