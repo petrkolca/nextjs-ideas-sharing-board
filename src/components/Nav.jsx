@@ -1,9 +1,16 @@
-import { Navigation } from "../styles/Nav.styled";
+import Link from "next/link";
+
+import { Navigation, MainLogo, NavLink } from "../styles/Nav.styled";
 
 const Nav = () => {
   return (
     <Navigation>
-      <h1>Navigation</h1>
+      <Link href="/">
+        <MainLogo>Post Ideas</MainLogo>
+      </Link>
+      <ul>
+        <NavLink href={"/auth/login"}>Join Now</NavLink>
+      </ul>
     </Navigation>
   );
 };

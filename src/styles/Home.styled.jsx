@@ -71,8 +71,8 @@ export const Card = styled(Link)(
   p-6
   text-left
   hover:text-blue-600
-  focus:text-blue-600
-  `,
+  focus:text-blue-600 
+  `
 );
 
 export const CardTitle = tw.h3`
