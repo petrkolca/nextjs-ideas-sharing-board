@@ -1,24 +1,23 @@
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class _Document extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
         });
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
@@ -40,6 +39,12 @@ export default class _Document extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content="#000000" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
