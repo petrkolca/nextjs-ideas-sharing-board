@@ -27,6 +27,7 @@ const Login = () => {
     if (user) {
       // if user is logged in go HOME
       void route.push("/");
+      console.log("user is logged-in");
     } else {
       // stay in login page for user to login
       console.log("login");
@@ -38,7 +39,7 @@ const Login = () => {
       <h2>Join Today</h2>
       <div>
         <h3>Sign in with one of the providers</h3>
-        <LoginButton onClick={GoogleLogin}>
+        <LoginButton onClick={void GoogleLogin}>
           <FcGoogle />
           Sign in with Google
         </LoginButton>
