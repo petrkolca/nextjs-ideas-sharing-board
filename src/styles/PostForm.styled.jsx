@@ -44,3 +44,16 @@ export const PostFormCtn = styled.div`
     `}
   }
 `;
+
+export const WordCount = styled.p`
+  ${tw`
+    text-sm
+    font-normal
+  `}
+
+  &.hasError {
+    ${tw`
+      text-red-500 
+    `}
+  }
+`;
