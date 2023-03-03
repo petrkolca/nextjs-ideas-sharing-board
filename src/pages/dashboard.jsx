@@ -29,12 +29,7 @@ const Dashboard = () => {
     <div>
       <h1>Your Posts</h1>
       <div>posts</div>
-      <Button
-        className="my-6 bg-gray-800 py-2 px-4 font-medium text-white"
-        onClick={signOutHandler}
-      >
-        Sign out
-      </Button>
+      <Button onClick={signOutHandler}>Sign out</Button>
     </div>
   );
 };

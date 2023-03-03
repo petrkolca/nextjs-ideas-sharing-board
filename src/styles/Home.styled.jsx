@@ -15,7 +15,7 @@ export const Main = tw.main`
   w-full
   flex-1
   flex-col
-  px-20
+  sm:px-20
 `;
 
 export const Section = tw.section`
@@ -99,7 +99,7 @@ export const ButtonGroup = tw.div`
 `;
 
 export const Button = styled.button(
-  ({ danger = false, outline = false, disabled = false }) => [
+  ({ full = false, danger = false, outline = false, disabled = false }) => [
     danger
       ? tw`
         bg-red-500 
@@ -133,6 +133,7 @@ export const Button = styled.button(
         `
       : tw``,
     disabled ? tw`opacity-50 cursor-not-allowed` : tw`cursor-pointer`,
+    full ? tw`w-full mt-2` : tw`w-auto`,
     tw`
       py-2
       px-4
