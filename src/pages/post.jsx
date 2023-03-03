@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { PostFormCtn, WordCount } from "../styles/PostForm.styled";
 import { Button } from "../styles/Home.styled";
-import { async } from "@firebase/util";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const initialPostState = {
   description: "",
@@ -14,14 +14,29 @@ const initialPostState = {
 const Post = () => {
   const router = useRouter();
   const [post, setPost] = useState(initialPostState);
+  const [user, loading] = useAuthState(auth);
 
+  // listen value in textarea and setPost description object
   const onChangeHandler = (e) => {
     setPost({ ...post, description: e.target.value });
+
+    console.log("post text: ", post);
   };
 
-  const onSubmitPostHandler = (e) => {
+  // Submitting post
+  const onSubmitPostHandler = async (e) => {
     e.preventDefault();
     console.log("Post is submitted!", post);
+
+    // POST into the Firestore Database
+    const collectionRef = collection(db, "posts");
+    await addDoc(collectionRef, {
+      ...post,
+      timestamp: serverTimestamp(),
+      user: user.uid,
+      avatar: user.photoURL,
+      username: user.displayName,
+    });
 
     setPost(initialPostState);
   };
