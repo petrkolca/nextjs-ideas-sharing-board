@@ -37,7 +37,7 @@ export const TitleLink = styled(Link)(
   text-blue-500
   hover:text-blue-700
   focus:text-blue-700
-  `,
+  `
 );
 
 export const Description = tw.p`
@@ -98,7 +98,7 @@ export const ButtonGroup = tw.div`
   p-1
 `;
 
-export const Button = styled.button (
+export const Button = styled.button(
   ({ danger = false, outline = false, disabled = false }) => [
     danger
       ? tw`
@@ -134,12 +134,27 @@ export const Button = styled.button (
       : tw``,
     disabled ? tw`opacity-50 cursor-not-allowed` : tw`cursor-pointer`,
     tw`
-      font-bold
       py-2
       px-4
-      rounded
+      text-sm
+      bg-gradient-to-tr 
+      from-purple-600 
+      to-purple-400 
+      hover:bg-gradient-to-br 
+      focus:ring-4 
+      focus:outline-none 
+      focus:ring-purple-200 
+      dark:focus:ring-purple-500
+      text-white
+      rounded-lg
+      shadow-lg 
+      shadow-purple-500/50 
+      dark:shadow-lg 
+      dark:shadow-purple-800/80
+      focus:shadow-none
+      font-medium
     `,
-  ],
+  ]
 );
 
 export const Footer = tw.footer`

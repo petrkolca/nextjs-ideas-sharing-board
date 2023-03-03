@@ -16,7 +16,7 @@ const Login = () => {
   const GoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      await route.push("/");
+      // route.push("/");
       // eslint-disable-next-line prettier/prettier
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       // if user is logged in go HOME
-      void route.push("/");
+      route.push("/");
       console.log("user is logged-in");
     } else {
       // stay in login page for user to login
@@ -39,7 +39,7 @@ const Login = () => {
       <h2>Join Today</h2>
       <div>
         <h3>Sign in with one of the providers</h3>
-        <LoginButton onClick={void GoogleLogin}>
+        <LoginButton onClick={GoogleLogin}>
           <FcGoogle />
           Sign in with Google
         </LoginButton>

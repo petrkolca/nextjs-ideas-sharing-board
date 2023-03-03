@@ -7,7 +7,7 @@ import { Navigation, MainLogo, NavLink, NavButton } from "../styles/Nav.styled";
 const Nav = () => {
   const [user, loading] = useAuthState(auth);
 
-  console.log("user test: ", user);
+  // console.log("user test: ", user);
 
   return (
     <Navigation>
