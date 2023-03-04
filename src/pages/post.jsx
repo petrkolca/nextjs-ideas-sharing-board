@@ -2,6 +2,7 @@ import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { PostFormCtn, WordCount } from "../styles/PostForm.styled";
 import { Button } from "../styles/Home.styled";
@@ -27,6 +28,27 @@ const Post = () => {
   const onSubmitPostHandler = async (e) => {
     e.preventDefault();
     console.log("Post is submitted!", post);
+
+    // Check if user is allowed to submit the post
+    // notify user descripiton is empty
+    if (!post.description) {
+      toast.error("Description Field is empty!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+
+      return;
+    }
+
+    // notify user descripiton is too long
+    if (post.description > 250) {
+      toast.error("Description is too long!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+
+      return;
+    }
 
     // POST into the Firestore Database
     const collectionRef = collection(db, "posts");

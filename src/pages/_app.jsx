@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import { GlobalStyles } from "../styles/GlobalStyles";
 import "tailwindcss/tailwind.css";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const _App = ({ Component, pageProps }) => {
@@ -17,7 +18,7 @@ const _App = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <ToastContainer />
+        <ToastContainer limit={1} closeOnClick />
         <Component {...pageProps} />
       </Layout>
     </>
