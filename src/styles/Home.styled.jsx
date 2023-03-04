@@ -26,8 +26,7 @@ export const Section = styled.section`
 `;
 
 export const Title = tw.h2`
-  text-2xl
-  font-bold
+  text-xl
 `;
 
 export const TitleLink = styled(Link)(

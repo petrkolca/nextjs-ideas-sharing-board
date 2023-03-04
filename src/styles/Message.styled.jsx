@@ -5,20 +5,34 @@ export const MessageCtn = styled.div`
   ${tw`
     bg-white
     p-8
-    
+    border-b-2
+    rounded-lg
   `}
+
+  > div {
+    ${tw`
+      flex
+      items-center
+      gap-2
+    `}
+
+    & ~ div {
+      ${tw`
+        py-4
+      `}
+    }
+  }
 
   h2 {
     ${tw`
-      text-2xl
-      font-medium
+      text-sm
+      font-normal
     `}
   }
 
-  h3,
-  > div {
+  p {
     ${tw`
-      py-4
+      font-normal
     `}
   }
 `;
@@ -27,14 +41,13 @@ export const UserProfileImg = styled.div`
   ${tw`
     relative
     m-0
-    mr-1
+    p-0
     block
-    h-5
-    w-5
+    h-8
+    w-8
     cursor-pointer
     overflow-hidden
     rounded-full
-    p-0
   `}
 `;
 

@@ -20,7 +20,10 @@ const HomePage = () => {
       setAllPosts(
         snapshot.docs.map((doc) => {
           // return object of all posts
-          return { ...doc.data() };
+          return {
+            ...doc.data(),
+            id: doc.id,
+          };
         })
       );
     });
@@ -29,8 +32,9 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    getPosts();
     console.log("all posts are listed: ", allPosts);
-  }, [allPosts]);
+  }, []);
 
   return (
     <Fragment>
@@ -41,7 +45,9 @@ const HomePage = () => {
 
       <Section>
         <Title>See what other people are saying</Title>
-        <Message />
+        {allPosts.map((post) => (
+          <Message key={post.id} {...post} />
+        ))}
       </Section>
     </Fragment>
   );

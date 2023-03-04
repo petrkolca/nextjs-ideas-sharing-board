@@ -2,28 +2,23 @@ import Image from "next/image";
 
 import { MessageCtn, UserProfileImg } from "../styles/Message.styled";
 
-const user = {
-  photoURL: "",
-  displayName: "Petr Kolarik",
-};
-
-const Message = ({ children }) => {
+const Message = ({ children, avatar, username, description, timestamp }) => {
   return (
     <MessageCtn>
       <div>
         <UserProfileImg>
           <Image
-            src={user.photoURL}
-            alt={user.displayName}
+            src={avatar}
+            alt={username}
             layout="fill" // required
             objectFit="cover" // change to suit your needs
             className=""
           />
         </UserProfileImg>
-        <h2>{user.displayName}</h2>
+        <h2>{username}</h2>
       </div>
       <div>
-        <p>description goes here</p>
+        <p>{description}</p>
       </div>
       {children}
     </MessageCtn>
