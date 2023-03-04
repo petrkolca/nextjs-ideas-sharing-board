@@ -18,17 +18,15 @@ export const Main = tw.main`
   sm:px-20
 `;
 
-export const Section = tw.section`
-  flex
-  flex-col
-  items-center
-  justify-center
-  w-full
-  p-3
+export const Section = styled.section`
+  ${tw`
+    my-12
+    font-medium
+  `}
 `;
 
-export const Title = tw.h1`
-  text-6xl
+export const Title = tw.h2`
+  text-2xl
   font-bold
 `;
 
