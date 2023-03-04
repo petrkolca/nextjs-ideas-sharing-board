@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Layout from "../components/layout";
+import { ToastContainer } from "react-toastify";
 
 import { GlobalStyles } from "../styles/GlobalStyles";
 import "tailwindcss/tailwind.css";
+
 
 const _App = ({ Component, pageProps }) => {
   return (
@@ -15,6 +17,7 @@ const _App = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <ToastContainer />
         <Component {...pageProps} />
       </Layout>
     </>
