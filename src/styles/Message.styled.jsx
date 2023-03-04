@@ -50,23 +50,3 @@ export const UserProfileImg = styled.div`
     rounded-full
   `}
 `;
-
-export const LoginButton = styled.button`
-  ${tw`
-    text-white
-    bg-gray-700
-    w-full
-    font-medium
-    rounded-lg
-    flex
-    align-middle
-    p-4
-    gap-2
-  `}
-
-  svg {
-    ${tw`
-      text-2xl
-    `}
-  }
-`;
