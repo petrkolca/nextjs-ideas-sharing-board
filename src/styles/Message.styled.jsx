@@ -4,7 +4,9 @@ import tw, { css } from "twin.macro";
 export const MessageCtn = styled.div`
   ${tw`
     bg-white
-    p-8
+    px-8
+    pt-8
+    pb-2
     border-b-2
     rounded-lg
   `}
@@ -49,4 +51,41 @@ export const UserProfileImg = styled.div`
     overflow-hidden
     rounded-full
   `}
+`;
+
+export const UtilsCtn = styled.div`
+  ${tw`
+    flex
+    gap-5
+    justify-end
+    items-center
+  `}
+
+  button {
+    ${tw`
+      flex
+      gap-2
+      items-center
+      text-sm
+      text-gray-500
+      pt-2
+    `}
+
+    svg {
+      ${tw`
+        stroke-gray-500
+      `}
+    }
+
+    &:first-child {
+      ${tw`
+        text-red-500
+      `}
+      svg {
+        ${tw`
+          stroke-red-500
+        `}
+      }
+    }
+  }
 `;

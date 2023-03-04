@@ -10,8 +10,11 @@ import {
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState, useEffect, useCallback } from "react";
-import { Button } from "../styles/Home.styled";
 import Message from "../components/Message";
+import { RiEditLine } from "react-icons/ri";
+import { IoTrashBinOutline } from "react-icons/io5";
+import { Button } from "../styles/Home.styled";
+import { UtilsCtn } from "../styles/Message.styled";
 
 const Dashboard = () => {
   const route = useRouter();
@@ -65,7 +68,18 @@ const Dashboard = () => {
       <h1>Your Posts</h1>
       <div>
         {allUserPosts.map((post) => (
-          <Message key={post.id} {...post} />
+          <Message key={post.id} {...post}>
+            <UtilsCtn>
+              <button>
+                <IoTrashBinOutline />
+                Delete
+              </button>
+              <button>
+                <RiEditLine />
+                Edit
+              </button>
+            </UtilsCtn>
+          </Message>
         ))}
       </div>
       <Button className="mt-4" onClick={signOutHandler}>Sign out</Button>
