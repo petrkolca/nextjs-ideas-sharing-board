@@ -38,7 +38,10 @@ const Post = () => {
       username: user.displayName,
     });
 
+    // clearing form out
     setPost(initialPostState);
+    // redirect back to homepage with list of all posts
+    return router.push("/");
   };
 
   useEffect(() => {
