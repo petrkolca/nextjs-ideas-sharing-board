@@ -14,6 +14,7 @@ const initialPostState = {
 
 const Post = () => {
   const router = useRouter();
+  const updateData = router.query;
   const [post, setPost] = useState(initialPostState);
   const [user, loading] = useAuthState(auth);
 
@@ -66,9 +67,17 @@ const Post = () => {
     return router.push("/");
   };
 
+  // Check our user
+  const checkUser = async () => {
+    if (loading) return;
+    // if not logged-in send user to Loggin page
+    if (!user) return router.push("/auth/login");
+  };
+
   useEffect(() => {
+    checkUser();
     console.log(post);
-  }, [post]);
+  }, [user, loading]);
 
   return (
     <PostFormCtn>

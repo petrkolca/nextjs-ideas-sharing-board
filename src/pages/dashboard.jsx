@@ -79,14 +79,19 @@ const Dashboard = () => {
         {allUserPosts.map((post) => (
           <Message key={post.id} {...post}>
             <UtilsCtn>
-              <button onClick={() => deletePostHandler(post.id)}>
+              <button
+                className="btn-delete"
+                onClick={() => deletePostHandler(post.id)}
+              >
                 <IoTrashBinOutline />
                 Delete
               </button>
-              <button>
-                <RiEditLine />
-                Edit
-              </button>
+              <Link href={{ pathname: "/post", query: post }}>
+                <button>
+                  <RiEditLine />
+                  Edit
+                </button>
+              </Link>
             </UtilsCtn>
           </Message>
         ))}

@@ -77,7 +77,7 @@ export const UtilsCtn = styled.div`
       `}
     }
 
-    &:first-child {
+    &.btn-delete {
       ${tw`
         text-red-500
       `}
