@@ -13,8 +13,8 @@ const initialPostState = {
 };
 
 const Post = () => {
-  const router = useRouter();
-  const updateData = router.query;
+  const route = useRouter();
+  const routeData = route.query;
   const [post, setPost] = useState(initialPostState);
   const [user, loading] = useAuthState(auth);
 
@@ -64,14 +64,23 @@ const Post = () => {
     // clearing form out
     setPost(initialPostState);
     // redirect back to homepage with list of all posts
-    return router.push("/");
+    return route.push("/");
   };
 
   // Check our user
   const checkUser = async () => {
     if (loading) return;
     // if not logged-in send user to Loggin page
-    if (!user) return router.push("/auth/login");
+    if (!user) return route.push("/auth/login");
+    // if post already exists
+    // check for routeData.id
+    // and update form with existing description from the routeData
+    if (routeData.id) {
+      setPost({
+        description: routeData.description,
+        id: routeData.id,
+      });
+    }
   };
 
   useEffect(() => {
