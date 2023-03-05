@@ -7,6 +7,8 @@ import {
   orderBy,
   query,
   where,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useState, useEffect, useCallback } from "react";
@@ -55,6 +57,13 @@ const Dashboard = () => {
     return unsubscribe;
   }, [loading, route, user]);
 
+  // DELETE Post
+  const deletePostHandler = async (id) => {
+    // deleting Reference of document
+    const docRef = doc(db, "posts", id);
+    await deleteDoc(docRef);
+  };
+
   const signOutHandler = async () => {
     await auth.signOut();
   };
@@ -70,7 +79,7 @@ const Dashboard = () => {
         {allUserPosts.map((post) => (
           <Message key={post.id} {...post}>
             <UtilsCtn>
-              <button>
+              <button onClick={() => deletePostHandler(post.id)}>
                 <IoTrashBinOutline />
                 Delete
               </button>
