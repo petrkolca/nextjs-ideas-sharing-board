@@ -85,13 +85,15 @@ const Post = () => {
 
   useEffect(() => {
     checkUser();
-    console.log(post);
+    console.log("posts: ", post);
   }, [user, loading]);
 
   return (
     <PostFormCtn>
       <form onSubmit={onSubmitPostHandler}>
-        <h1>Create a new post</h1>
+        <h1>
+          {post.hasOwnProperty("id") ? "Edit your post" : "Create a new post"}
+        </h1>
         <div>
           <h3>Description</h3>
           <textarea
