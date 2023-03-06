@@ -6,7 +6,12 @@ import { toast } from "react-toastify";
 
 import { PostFormCtn, WordCount } from "../styles/PostForm.styled";
 import { Button } from "../styles/Home.styled";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 
 const initialPostState = {
   description: "",
@@ -51,15 +56,27 @@ const Post = () => {
       return;
     }
 
-    // POST into the Firestore Database
-    const collectionRef = collection(db, "posts");
-    await addDoc(collectionRef, {
-      ...post,
-      timestamp: serverTimestamp(),
-      user: user.uid,
-      avatar: user.photoURL,
-      username: user.displayName,
-    });
+    // Check if POST exist by having ID
+    if (post?.hasOwnProperty("id")) {
+      // Update EXISTING POST inside the Firestore Database
+      const docRef = doc(db, "posts", post.id);
+      const updatedPost = {
+        ...post,
+        timestamp: serverTimestamp(),
+      };
+      await updateDoc(docRef, updatedPost);
+      return route.push("/");
+    } else {
+      // Create NEW POST into the Firestore Database
+      const collectionRef = collection(db, "posts");
+      await addDoc(collectionRef, {
+        ...post,
+        timestamp: serverTimestamp(),
+        user: user.uid,
+        avatar: user.photoURL,
+        username: user.displayName,
+      });
+    }
 
     // clearing form out
     setPost(initialPostState);
@@ -85,7 +102,6 @@ const Post = () => {
 
   useEffect(() => {
     checkUser();
-    console.log("posts: ", post);
   }, [user, loading]);
 
   return (
