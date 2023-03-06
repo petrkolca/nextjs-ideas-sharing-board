@@ -10,6 +10,7 @@ import {
   collection,
   addDoc,
   serverTimestamp,
+  doc,
   updateDoc,
 } from "firebase/firestore";
 
@@ -27,7 +28,7 @@ const Post = () => {
   const onChangeHandler = (e) => {
     setPost({ ...post, description: e.target.value });
 
-    console.log("post text: ", post);
+    // console.log("post text: ", post);
   };
 
   // Submitting post
