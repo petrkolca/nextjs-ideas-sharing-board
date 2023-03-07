@@ -81,6 +81,11 @@ const Post = () => {
 
     // clearing form out
     setPost(initialPostState);
+    // adding notification for succesfull post submission
+    toast.success("Post is succesfully submitted! ", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 500,
+    });
     // redirect back to homepage with list of all posts
     return route.push("/");
   };
