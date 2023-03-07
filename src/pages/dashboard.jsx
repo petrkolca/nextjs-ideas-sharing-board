@@ -78,7 +78,7 @@ const Dashboard = () => {
       <div>
         {allUserPosts.map((post) => (
           <Message key={post.id} {...post}>
-            <UtilsCtn>
+            <UtilsCtn edit>
               <button
                 className="btn-delete"
                 onClick={() => deletePostHandler(post.id)}

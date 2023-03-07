@@ -57,9 +57,15 @@ export const UtilsCtn = styled.div`
   ${tw`
     flex
     gap-5
-    justify-end
     items-center
   `}
+
+  ${({ edit = false }) =>
+    edit
+      ? tw`
+        justify-end
+        `
+      : ``}
 
   button {
     ${tw`
@@ -81,6 +87,7 @@ export const UtilsCtn = styled.div`
       ${tw`
         text-red-500
       `}
+
       svg {
         ${tw`
           stroke-red-500

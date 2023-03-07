@@ -1,11 +1,14 @@
 import Head from "next/head";
-import Message from "../components/Message";
+import Link from "next/link";
 import { Fragment, useState, useEffect } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../utils/firebase";
+import Message from "../components/Message";
+import { RiMessage2Line } from "react-icons/ri";
 
 //styles
 import { Section, Title } from "../styles/Home.styled";
+import { UtilsCtn } from "../styles/Message.styled";
 
 const HomePage = () => {
   // Create a state with all the POSTS
@@ -46,7 +49,16 @@ const HomePage = () => {
       <Section>
         <Title>See what other people are saying</Title>
         {allPosts.map((post) => (
-          <Message key={post.id} {...post} />
+          <Message key={post.id} {...post} >
+            <UtilsCtn>
+              <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
+                <button>
+                  <RiMessage2Line />
+                  Comments
+                </button>
+              </Link>
+            </UtilsCtn>
+          </Message>
         ))}
       </Section>
     </Fragment>
