@@ -3,6 +3,7 @@ import tw, { css } from "twin.macro";
 
 export const PostFormCtn = styled.div`
   ${tw`
+  bg-white
     my-8
     p-12
     shadow-lg

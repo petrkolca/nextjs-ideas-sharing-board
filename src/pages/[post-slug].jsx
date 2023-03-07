@@ -10,7 +10,7 @@ import { Button } from "../styles/Home.styled";
 import { CommentCtn, CommentsListing } from "../styles/Message.styled";
 
 const PostDetails = () => {
-  const [user, loading] = useAuthState(auth);
+  // const [user, loading] = useAuthState(auth);
   const route = useRouter();
   const routeData = route.query;
   const [comment, setComment] = useState("");
@@ -20,8 +20,21 @@ const PostDetails = () => {
     setComment(e.target.value);
   };
 
-  const sendCommentHandler = () => {
-    console.log("object");
+  // Submit comment
+  const sendCommentHandler = async (e) => {
+    console.log("comment submitted");
+    // check if user is NOT logged-in => redirect
+    if (!auth.currentUser) return route.push("/auth/login");
+
+    // notify user if comment field is empty
+    if (!comment) {
+      toast.error("Don't leave empty comment textarea!", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+
+      return;
+    }
   };
 
   useEffect(() => {
@@ -42,7 +55,7 @@ const PostDetails = () => {
             cols="30"
             rows="2"
           ></textarea>
-          <Button onSubmit={sendCommentHandler}>Send Comment</Button>
+          <Button onClick={sendCommentHandler}>Send Comment</Button>
         </div>
         <CommentsListing>
           <h2>Comments</h2>
@@ -50,7 +63,7 @@ const PostDetails = () => {
             return (
               <div>
                 <div>
-                  <Image src={} />
+                  
                 </div>
               </div>
             );
