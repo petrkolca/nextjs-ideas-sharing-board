@@ -7,8 +7,9 @@ export const MessageCtn = styled.div`
     px-8
     pt-8
     pb-2
-    border-b-2
+    my-5
     rounded-lg
+    shadow-md
   `}
 
   > div {
@@ -66,7 +67,7 @@ export const UserProfileImg = styled.div`
 export const UtilsCtn = styled.div`
   ${tw`
     flex
-    gap-5
+    !gap-5
     items-center
   `}
 
@@ -77,19 +78,25 @@ export const UtilsCtn = styled.div`
         `
       : ``}
 
-  button {
+  button, a {
     ${tw`
       flex
       gap-2
       items-center
-      text-sm
-      text-gray-500
-      pt-2
+      font-normal
+      text-xs
+      text-gray-400
+      focus:ring-0
+    focus:outline-none
+      focus-visible:ring-4 
+    focus-visible:ring-purple-200 
     `}
 
     svg {
       ${tw`
         stroke-gray-500
+        w-4
+        h-4
       `}
     }
 

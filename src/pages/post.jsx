@@ -121,6 +121,7 @@ const Post = () => {
           <textarea
             value={post.description}
             onChange={onChangeHandler}
+            placeholder="Type a post content..."
             name=""
             id=""
             cols="30"

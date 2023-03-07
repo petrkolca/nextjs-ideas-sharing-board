@@ -95,29 +95,31 @@ const PostDetails = () => {
 
   // useMemo function memorise the computed value of the Comments Listing
   const commentsListing = useMemo(() => {
-    return allComments.map((comment, index) => {
-      return (
-        <CommentWrapper key={index}>
-          <div>
-            <UserProfileImg sml>
-              {comment.avatar.length > 0 && (
-                <Image
-                  src={comment.avatar}
-                  alt={comment.username}
-                  layout="fill" // required
-                  objectFit="cover" // change to suit your needs
-                  className=""
-                />
-              )}
-            </UserProfileImg>
-            <h3>{comment.username}</h3>
-          </div>
-          <div>
-            <p>{comment.message}</p>
-          </div>
-        </CommentWrapper>
-      );
-    });
+    if (typeof allComments !== 'undefined' && allComments.length > 0) {
+      return allComments.map((comment, index) => {
+        return (
+          <CommentWrapper key={index}>
+            <div>
+              <UserProfileImg sml>
+                {comment.avatar.length > 0 && (
+                  <Image
+                    src={comment.avatar}
+                    alt={comment.username}
+                    layout="fill" // required
+                    objectFit="cover" // change to suit your needs
+                    className=""
+                  />
+                )}
+              </UserProfileImg>
+              <h3>{comment.username}</h3>
+            </div>
+            <div>
+              <p>{comment.message}</p>
+            </div>
+          </CommentWrapper>
+        );
+      });
+    }
   }, [allComments]);
 
   // console.log("routeData: ", route.isReady);
@@ -139,10 +141,12 @@ const PostDetails = () => {
           ></textarea>
           <Button onClick={sendCommentHandler}>Send Comment</Button>
         </div>
-        <CommentsListing>
-          <h2>Comments</h2>
-          {commentsListing}
-        </CommentsListing>
+        {allComments ? (
+          <CommentsListing>
+            <h2>Comments</h2>
+            {commentsListing}
+          </CommentsListing>
+        ) : null}
       </CommentCtn>
     </div>
   );

@@ -6,7 +6,7 @@ export const PostFormCtn = styled.div`
   bg-white
     my-8
     p-12
-    shadow-lg
+    shadow-md
     rounded-lg
     w-full
     mx-auto
@@ -35,13 +35,14 @@ export const PostFormCtn = styled.div`
 
   textarea {
     ${tw`
-      bg-gray-800
+      bg-gray-200
       h-48
       w-full
-      text-white
+      text-gray-600
       text-sm
       rounded-lg
       p-2
+      focus:outline-none
     `}
   }
 `;

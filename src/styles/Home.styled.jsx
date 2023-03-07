@@ -26,13 +26,18 @@ export const Section = styled.section`
 
 export const Title = tw.h2`
   text-xl
+  pb-2
+  mb-5
+  border-b
+  border-gray-300
 `;
 
 export const TitleLink = styled(Link)(
   tw`
-  text-blue-500
-  hover:text-blue-700
-  focus:text-blue-700
+  text-purple-400
+  hover:text-purple-600
+  focus-visible:ring-4 
+  focus-visible:ring-purple-200 
   `
 );
 
@@ -66,8 +71,6 @@ export const Card = styled(Link)(
   border
   p-6
   text-left
-  hover:text-blue-600
-  focus:text-blue-600 
   `
 );
 
@@ -144,7 +147,7 @@ export const Button = styled.button(
       dark:focus:ring-purple-500
       text-white
       rounded-lg
-      shadow-lg 
+      shadow-md
       shadow-purple-500/50 
       dark:shadow-lg 
       dark:shadow-purple-800/80

@@ -87,7 +87,7 @@ const Dashboard = () => {
                 Delete
               </button>
               <Link href={{ pathname: "/post", query: post }}>
-                <button>
+                <button tabIndex="-1">
                   <RiEditLine />
                   Edit
                 </button>

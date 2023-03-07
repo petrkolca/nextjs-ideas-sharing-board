@@ -24,9 +24,11 @@ export const MainLogo = styled(Link)`
     text-xl
     font-medium
     text-gray-900
-    focus:ring-4 
+    focus:ring-0
     focus:outline-none 
-    focus:ring-purple-200 
+    focus-visible:ring-4 
+    focus-visible:ring-4 
+  focus-visible:ring-purple-200 
   `}
 `;
 
@@ -53,6 +55,15 @@ export const NavLink = styled(Link)`
       focus:shadow-none
       font-medium
     `}
+
+    ~ a {
+      ${tw`
+        focus:ring-0
+        focus:outline-none
+        focus-visible:ring-4 
+        focus-visible:ring-purple-200 
+      `}
+    }
   }
 `;
 

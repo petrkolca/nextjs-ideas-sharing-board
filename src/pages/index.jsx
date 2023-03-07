@@ -52,9 +52,14 @@ const HomePage = () => {
           <Message key={post.id} {...post} >
             <UtilsCtn>
               <Link href={{ pathname: `/${post.id}`, query: { ...post } }}>
-                <button>
+                <button tabIndex="-1">
                   <RiMessage2Line />
-                  Comments
+                  {post.comments?.length === 1
+                    ? `View ${post.comments?.length} Comment`
+                    : null}
+                  {post.comments?.length > 1
+                    ? `View all ${post.comments?.length} Comments`
+                    : `0 Comments`}
                 </button>
               </Link>
             </UtilsCtn>
