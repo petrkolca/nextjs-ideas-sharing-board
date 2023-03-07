@@ -21,6 +21,7 @@ export const MessageCtn = styled.div`
     & ~ div {
       ${tw`
         py-4
+        text-gray-500
       `}
     }
   }
@@ -28,7 +29,7 @@ export const MessageCtn = styled.div`
   h2 {
     ${tw`
       text-sm
-      font-normal
+      font-medium
     `}
   }
 
@@ -94,5 +95,56 @@ export const UtilsCtn = styled.div`
         `}
       }
     }
+  }
+`;
+
+export const CommentCtn = styled.div`
+  ${tw`
+    py-3
+  `}
+
+  > div:first-of-type {
+    ${tw`
+      relative
+      bg-gray-200
+      p-2
+      pb-12
+      rounded-lg
+    `}
+  }
+
+  textarea {
+    ${tw`
+      bg-gray-200
+      text-sm
+      text-gray-600
+      w-full
+      p-2
+      z-0
+    `}
+  }
+
+  button {
+    ${tw`
+      absolute
+      bottom-2
+      right-2
+      z-1
+    `}
+  }
+`;
+
+export const CommentsListing = styled.div`
+  ${tw`
+    py-3
+  `}
+
+  > div {
+    ${tw`
+      relative
+      p-2
+      pb-12
+      rounded-lg
+    `}
   }
 `;

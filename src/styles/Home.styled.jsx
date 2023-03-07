@@ -6,7 +6,6 @@ export const Container = tw.div`
   mx-6
   md:max-w-2xl
   md:mx-auto
-  bg-white
   font-poppins
 `;
 

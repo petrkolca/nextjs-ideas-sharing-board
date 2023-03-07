@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import tw from "twin.macro";
 
 export const GlobalStyles = createGlobalStyle`
   
@@ -13,5 +14,11 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+
+  body {
+    ${tw`
+      bg-gray-100
+    `}
   }
 `;
