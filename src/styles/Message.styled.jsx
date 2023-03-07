@@ -22,7 +22,7 @@ export const MessageCtn = styled.div`
       ${tw`
         py-4
         text-gray-500
-      `}
+        `}
     }
   }
 
@@ -46,12 +46,21 @@ export const UserProfileImg = styled.div`
     m-0
     p-0
     block
-    h-8
-    w-8
     cursor-pointer
     overflow-hidden
     rounded-full
   `}
+
+  ${({ sml = false }) =>
+    sml
+      ? tw`
+        h-5
+        w-5
+        `
+      : tw`
+        h-8
+        w-8
+      `}
 `;
 
 export const UtilsCtn = styled.div`
@@ -139,13 +148,34 @@ export const CommentsListing = styled.div`
   ${tw`
     py-3
   `}
+`;
 
-  > div {
+export const CommentWrapper = styled.div`
+  ${tw`
+    p-3
+    my-4
+    rounded-lg
+    bg-white
+    border-gray-300
+    text-gray-500
+    text-sm
+  `}
+
+  > div:first-of-type {
     ${tw`
-      relative
-      p-2
-      pb-12
-      rounded-lg
+      flex
+      gap-2
+      items-center
+      mb-1
+      text-gray-500
     `}
+
+    h3 {
+      ${tw`
+        text-xs
+        font-medium
+        text-gray-900
+      `}
+    }
   }
 `;

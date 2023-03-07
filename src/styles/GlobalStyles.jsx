@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     ${tw`
       bg-gray-100
+      text-gray-900
     `}
   }
 `;

@@ -18,6 +18,7 @@ import { Button } from "../styles/Home.styled";
 import {
   CommentCtn,
   CommentsListing,
+  CommentWrapper,
   UserProfileImg,
 } from "../styles/Message.styled";
 
@@ -92,23 +93,25 @@ const PostDetails = () => {
   const commentsListing = useMemo(() => {
     return allComments.map((comment, index) => {
       return (
-        <div key={index}>
-          <UserProfileImg>
-            {comment.avatar.length > 0 && (
-              <Image
-                src={comment.avatar}
-                alt={comment.username}
-                layout="fill" // required
-                objectFit="cover" // change to suit your needs
-                className=""
-              />
-            )}
-          </UserProfileImg>
-          <h2>{comment.username}</h2>
+        <CommentWrapper key={index}>
+          <div>
+            <UserProfileImg sml>
+              {comment.avatar.length > 0 && (
+                <Image
+                  src={comment.avatar}
+                  alt={comment.username}
+                  layout="fill" // required
+                  objectFit="cover" // change to suit your needs
+                  className=""
+                />
+              )}
+            </UserProfileImg>
+            <h3>{comment.username}</h3>
+          </div>
           <div>
             <p>{comment.message}</p>
           </div>
-        </div>
+        </CommentWrapper>
       );
     });
   }, [allComments]);
