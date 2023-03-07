@@ -3,7 +3,13 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { arrayUnion, Timestamp, doc, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  Timestamp,
+  doc,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
 import { toast } from "react-toastify";
 import Message from "../components/Message";
 
@@ -38,6 +44,9 @@ const PostDetails = () => {
     }
 
     const docRef = doc(db, "posts", routeData.id);
+    // updasting current post data
+    // by submitting into Post database and creating new ARRAY
+    // with arrayUnion function
     await updateDoc(docRef, {
       comments: arrayUnion({
         message: comment,
@@ -50,8 +59,17 @@ const PostDetails = () => {
     setComment("");
   };
 
+  const getComments = async () => {
+    const docRef = doc(db, "posts", routeData.id);
+    // retrieving data from current post.id
+    const docSnapshot = await getDoc(docRef);
+    // setting all comments retreived from DATA of the current post.id
+    setAllComments(docSnapshot.data().comments);
+  };
+
   useEffect(() => {
-    console.log("message loaded");
+    if (!route.isReady) return;
+    getComments();
   }, []);
 
   return (
@@ -72,7 +90,7 @@ const PostDetails = () => {
         </div>
         <CommentsListing>
           <h2>Comments</h2>
-          {/* {allComments.map((comment) => {
+          {allComments.map((comment) => {
             return (
               <div>
                 <div>
@@ -80,7 +98,7 @@ const PostDetails = () => {
                 </div>
               </div>
             );
-          })} */}
+          })}
         </CommentsListing>
       </CommentCtn>
     </div>
