@@ -10,6 +10,7 @@ import {
   doc,
   updateDoc,
   getDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Message from "../components/Message";
@@ -73,15 +74,18 @@ const PostDetails = () => {
 
   // useCallback function as it is dependancy for useEffect
   // and called only on useEffect request
-  const getComments = useCallback(async () => {
+  const getComments = useCallback(() => {
     const docRef = doc(db, "posts", routeData.id);
     // retrieving data from current post.id
-    const docSnapshot = await getDoc(docRef);
-    // check if the snapshot exists
-    if (docSnapshot.exists()) {
-      // setting all comments retreived from DATA of the current post.id
-      setAllComments(docSnapshot.data().comments);
-    }
+    const docSnapshot = onSnapshot(docRef, (snapshot) => {
+      // check if the snapshot exists
+      if (snapshot.exists()) {
+        // setting all comments retreived from DATA of the current post.id
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        setAllComments(snapshot.data().comments);
+      }
+    });
+    return docSnapshot;
   }, [routeData.id]);
 
   useEffect(() => {
