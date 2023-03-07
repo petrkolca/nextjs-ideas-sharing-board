@@ -121,7 +121,7 @@ export const CommentCtn = styled.div`
       w-full
       p-2
       z-0
-      focus:outline-gray-300
+      focus:outline-none
     `}
   }
 

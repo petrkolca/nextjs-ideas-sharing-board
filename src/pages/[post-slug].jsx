@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { auth, db } from "../utils/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Message from "../components/Message";
+import { arrayUnion, Timestamp, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import Message from "../components/Message";
 
 import { Button } from "../styles/Home.styled";
 import { CommentCtn, CommentsListing } from "../styles/Message.styled";
@@ -35,6 +36,18 @@ const PostDetails = () => {
 
       return;
     }
+
+    const docRef = doc(db, "posts", routeData.id);
+    await updateDoc(docRef, {
+      comments: arrayUnion({
+        message: comment,
+        avatar: auth.currentUser.photoURL,
+        username: auth.currentUser.displayName,
+        time: Timestamp.now(),
+      }),
+    });
+
+    setComment("");
   };
 
   useEffect(() => {
